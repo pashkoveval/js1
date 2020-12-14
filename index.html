@@ -1,11 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
+    <script>
+        'use strict';
+        //пример 1
+        let a = 1,
+            b = 1,
+            c, d;
+        c = ++a;
+        console.log(c); // ответ: 2 потому что 1 + 1 равносильно записе а ++а
+        //пример 2
+        d = b++;
+        console.log(d); //ответ: 1 потому что прибовление переходит на другое действие с этой переменной
+        //пример 3
+        c = 2 + ++a;
+        console.log(
+            c); //ответ: 5 потому что выше в переменную а была 2ка к которой мы прибовляем еще 1цу при помоще ++а
+        //пример 4
+        d = 2 + b++;
+        console.log(
+            d
+        ); //ответ: 4 потому что b в этой аперации добыли отлеженую 1цу и стала равна 2 и по этому 2 + 2 = 4 но также остаеться 1ца на следующую опирацию
+        console.log(a); //3
+
+
+
+        // 2 
+        let aa = 2;
+        let x = 1 + (aa *= 2);
+        //   *= оператор умнажение и присвоения тоесть 2 * 2 = 4 первое дествие и потом 4+1 =5 второе действие
+
+
+        let aaa = 2;
+        let bbb = 6;
+
+        function numb() {
+            if (aaa >= 0 && bbb >= 0) {
+                console.log(`разность ${aaa - bbb} `);
+            } else if (aaa <= 0 && bbb <= 0) {
+                console.log(`произведение ${aaa * bbb} `);
+            } else {
+                console.log(`сумма ${aaa + bbb} `);
+            };
+        }
+        numb();
+
+        function sum(a1, b1) {
+            let result = a1 + b1;
+            console.log(`зачада 4 сумма ${result} `);
+            return result
+        };
+
+        sum(4, 3);
+
+        function difference(a1, b1) {
+            let result2 = a1 - b1;
+            console.log(`зачада 4 разность ${result2} `);
+            return result2
+        };
+
+        difference(4, 3);
+
+        function separation(a1, b1) {
+            let result3 = a1 / b1;
+            console.log(`зачада 4 деление ${result3} `);
+            return result3
+        };
+
+        separation(4, 3);
+
+        function multiplication(a1, b1) {
+            let result4 = a1 * b1;
+            console.log(`зачада 4 умножение ${result4} `);
+            return result4
+        };
+
+        multiplication(4, 3);
+
+        function mathOperation(arg1, arg2, operation) {
+
+            switch (operation) {
+                case '+':
+                    console.log('внизу 5 задание');
+                    return sum(arg1, arg2);
+                case '-':
+                    console.log('внизу 5 задание');
+                    return difference(arg1, arg2);
+                case '*':
+                    console.log('внизу 5 задание');
+                    return multiplication(arg1, arg2);
+                case '/':
+                    console.log('внизу 5 задание');
+                    return separation(arg1, arg2);
+
+            }
+        };
+
+        mathOperation(10, 2, "*");
+    </script>
 </body>
+
 </html>
