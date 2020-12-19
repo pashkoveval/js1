@@ -1,11 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
+    <script>
+        'use strict';
+
+        // 3 УРОК 1 ЗАДАНИЕ
+        console.log('это 1 задание 3 урока');
+        for (let i = 0; i < 11; i++) {
+            if (i == 0) {
+                console.log(i + ' - это ноль');
+            } else if (i % 2) {
+                console.log(i + ' - это не четное число');
+            } else {
+                console.log(i + ' - это четное число');
+            }
+        }
+
+        // 3 УРОК 2 ЗАДАНИЕ
+
+        const post = {
+            author: "John", //вывести этот текст
+            postId: 23,
+            comments: [{
+                    userId: 10,
+                    userName: "Alex",
+                    text: "lorem ipsum",
+                    rating: {
+                        likes: 10,
+                        dislikes: 2 //вывести это число
+                    }
+                },
+                {
+                    userId: 5, //вывести это число
+                    userName: "Jane",
+                    text: "lorem ipsum 2", //вывести этот текст
+                    rating: {
+                        likes: 3,
+                        dislikes: 1
+                    }
+                },
+            ]
+        };
+        console.log('это 2 задание 3 урока');
+        console.log(post.author);
+        console.log(post.comments[0].rating.dislikes);
+        console.log(post.comments[1].userId);
+        console.log(post.comments[1].text);
+
+        // 3 УРОК 3 ЗАДАНИЕ
+        console.log('это 3 задание 3 урока');
+
+        const products = [{
+                id: 3,
+                price: 200,
+            },
+            {
+                id: 4,
+                price: 900,
+            },
+            {
+                id: 1,
+                price: 1000,
+            },
+        ];
+
+        function sale(product) {
+            let procent = 15;
+            console.log(product.price / 100 * procent);
+        }
+        products.forEach(sale);
+
+        // 3 УРОК 4 ЗАДАНИЕ
+        console.log('это 4 задание 3 урока');
+
+        const productss = [{
+                id: 3,
+                price: 127,
+                photos: [
+                    "1.jpg",
+                    "2.jpg",
+                ]
+            },
+            {
+                id: 5,
+                price: 499,
+                photos: []
+            },
+            {
+                id: 10,
+                price: 26,
+                photos: [
+                    "3.jpg"
+                ]
+            },
+            {
+                id: 8,
+                price: 78,
+            },
+        ];
+
+        const photos = productss.filter(function (item) {
+            if ("photos" in item && item.photos.length > 0) {
+                console.log(item);
+            }
+        });
+        console.log(photos);
+
+        const sortedPrice = productss.sort(function (item1, item2) {
+            return item1.price - item2.price
+        })
+        console.log(sortedPrice);
+
+        // 3 УРОК 5 ЗАДАНИЕ
+        console.log('это 5 задание 3 урока');
+
+        for (let i = 0; i < 10; console.log(i++)) {};
+
+        // 3 УРОК 6 ЗАДАНИЕ
+        console.log('это 6 задание 3 урока');
+
+        for (let i = 0; i < 21; i++) {
+            let str = "";
+            for (let y = 0; y <= i; y++) {
+                str += "x";
+            }
+            console.log(str);
+        }
+
+
+
+        // 4 УРОК 1.1 ЗАДАНИЕ
+        console.log('это 1.1 задание 4 урока');
+        console.log('ES5');
+
+
+
+        // вариант 1 ES5
+        console.log('вариант 1');
+
+
+        function Product(name, price, sale) {
+            this.name = name;
+            this.price = price;
+            this.sale = sale;
+        };
+
+        Product.prototype.make25PercentDiscount = function () {
+            this.priceVsSale = this.price - (this.price / 100 * this.sale);
+        }
+
+        const product1 = new Product('hhh', 100, 25)
+        product1.make25PercentDiscount()
+
+        console.log(product1);
+
+        // вариант 2 ES5
+        console.log('вариант 2');
+
+        function Products(name, price) {
+            this.name = name;
+            this.price = price;
+        };
+
+        function ProductsVsSle(name, price, sale) {
+            Products.call(this, name, price);
+            this.sale = sale;
+        }
+
+        ProductsVsSle.prototype = Object.create(Products.prototype);
+        ProductsVsSle.prototype.constructor = Products
+        ProductsVsSle.prototype.sales = function () {
+            this.priceVsSale = this.price - (this.price / 100 * this.sale)
+        }
+
+
+        let pr1 = new ProductsVsSle('ggg', 200, 33)
+        pr1.sales()
+        console.log(pr1);
+
+
+        // ES6
+        console.log('ES6');
+
+        class Productss {
+            constructor(name, price) {
+                this.name = name;
+                this.price = price;
+            }
+        }
+
+        class ProductsVsSale extends Productss {
+            constructor(name, price, sale) {
+                super(name, price);
+                this.sale = sale;
+            }
+            salesPrice() {
+                //  если нужно сразу вывести цену с скидкой делаем так:
+                //  this.priceVsSale меняем на this.price
+                //  и получаем сразу this.price с скидкой в нужных процентакх
+                this.priceVsSale = this.price - (this.price / 100 * this.sale);
+            };
+        }
+
+        let priceVsSale111 = new ProductsVsSale('vvv', 654, 57)
+        priceVsSale111.salesPrice()
+        console.log(priceVsSale111);
+
+
+
+
+        // 4 УРОК 1.2 ЗАДАНИЕ
+        console.log('это 1.2 задание 4 урока');
+        console.log('ES5');
+
+
+
+        function Post(author, text, date) {
+            this.author = author;
+            this.text = text;
+            this.date = date;
+        };
+
+        Post.prototype.edit = function (text) {
+            this.text = text;
+        }
+
+        function AttachedPost(author, text, date) {
+            Post.call(this, author, text, date);
+            this.highlighted = false;
+        }
+
+        AttachedPost.prototype = Object.create(Post.prototype);
+        AttachedPost.prototype.constructor = Post;
+        AttachedPost.prototype.makeTextHighlighted = function () {
+            this.highlighted = true;
+        }
+
+        let attachedPost1 = new AttachedPost('me', 'bla bla bla', '19.12.2020');
+        attachedPost1.makeTextHighlighted();
+        attachedPost1.edit('bla1 bla1 bla1')
+        console.log(attachedPost1);
+
+        // ES6
+        console.log('ES6');
+
+
+        class Post2 {
+            constructor(author, text, date) {
+                this.author = author;
+                this.text = text;
+                this.date = date;
+            }
+
+            edit(text) {
+                this.text = text;
+            }
+
+        }
+
+        class AttachedPost2 extends Post2 {
+            constructor(author, text, date) {
+                super(author, text, date);
+                this.highlighted = false;
+            }
+            makeTextHighlighted() {
+                this.highlighted = true;
+            };
+        }
+
+        let attachedPost2 = new AttachedPost2('me2', 'bla bla bla', '20.12.2020')
+        attachedPost2.makeTextHighlighted()
+        attachedPost2.edit('bla2 bla2 bla2')
+        console.log(attachedPost2);
+    </script>
 </body>
+
 </html>
